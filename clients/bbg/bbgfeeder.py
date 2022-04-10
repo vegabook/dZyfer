@@ -264,10 +264,10 @@ class Poller():
         while True:
             await asyncio.sleep(self.poll_secs)
             async with httpx.AsyncClient() as client:
-                randstring = "".join([random.choice("Thomas Browne") for _ in range(5)])
-                resp = await client.put(self.url + "/api/create", 
-                        data = (debug := {"message": "ping", "random string": randstring}))
-                print(f"sent: {debug}")
+                resp = await client.get(self.url + "/api/ping")
+                #randstring = "".join([random.choice("Thomas Browne") for _ in range(5)])
+                #resp = await client.post(self.url + "/api/data", 
+                #        data = (debug := {"message": "ping", "random string": randstring}))
                 if resp.status_code != 200:
                     print(Fore.YELLOW, f"error {resp.status_code}", Style.RESET_ALL)
                 else: 
