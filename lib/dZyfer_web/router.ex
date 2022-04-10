@@ -23,9 +23,14 @@ defmodule DZyferWeb.Router do
   scope "/api", DZyferWeb do
     pipe_through :api
 
-    post "/ping", BbgController, :ping
+    get "/ping", BbgController, :ping
   end
 
+  scope "/api", DZyferWeb do
+    pipe_through :api
+
+    post "/data", BbgController, :data
+  end
   # Other scopes may use custom stacks.
   # scope "/api", DZyferWeb do
   #   pipe_through :api
