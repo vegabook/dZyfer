@@ -5,32 +5,18 @@ defmodule DZyfer.Schemas.Sample do
 
 
   schema "sample" do
-    field :ticker, :string
-    field :field, :string
-    field :source, :string
-    field :period, :string
     field :time, :utc_datetime
     field :high, :float
     field :low, :float
     field :close, :float
-    timestamps()
-
-    belongs_to :ticker, Blog.Schemas.Ticker
-
+    belongs_to :sub, Blog.Schemas.Sub
     timestamps()
   end
 
   def changeset(sample, params \\ %{}) do
     sample
-    |> cast(params, [:ticker, :field, :source, :period, 
-      :time, :high, :low, :close])
-    |> validate_required([:ticker])
-    |> validate_required([:field])
-    |> validate_required([:source])
-    |> validate_required([:period])
-    |> validate_required([:time])
-    |> validate_required([:time, :low, :close])
-
+    |> cast(params, [:time, :high, :low, :close])
+    |> validate_required([:time, :close])
   end
 
 end
