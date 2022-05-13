@@ -1,0 +1,3 @@
+[submodule "clients/bbg/blpapi-python"]
+	path = clients/bbg/blpapi-python
+	url = https://github.com/msitt/blpapi-python
